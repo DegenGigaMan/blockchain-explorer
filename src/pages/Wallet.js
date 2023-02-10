@@ -1,4 +1,4 @@
-import WalletViewer from "../../components/WalletViewer/WalletViewer";
+import WalletViewer from "../components/WalletViewer/WalletViewer";
 
 const WalletPage = () => {
   return <WalletViewer />;

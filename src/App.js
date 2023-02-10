@@ -1,11 +1,10 @@
-import "./App.css";
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/Home/HomePage";
-import CreateTxnPage from "./pages/CreateTransaction/CreateTxnPage";
-import SettingsPage from "./pages/Settings/SettingsPage";
+import HomePage from "./pages/Home";
+import NewTransactionPage from "./pages/NewTransactionPage";
+import SettingsPage from "./pages/Settings";
 import Layout from "./components/Layout/Layout";
-import ErrorPage from "./pages/Error/ErrorPage";
+import ErrorPage from './pages/Error';
 import WalletViewer from "./components/WalletViewer/WalletViewer";
 
 const router = createBrowserRouter([
@@ -17,7 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       //{ path: "/wallet", element: <WalletPage /> },
       { path: "wallet/:walletId", element: <WalletViewer /> },
-      { path: "createTxn", element: <CreateTxnPage /> },
+      { path: "new-transaction", element: <NewTransactionPage /> },
       { path: "settings", element: <SettingsPage /> },
     ],
   },
