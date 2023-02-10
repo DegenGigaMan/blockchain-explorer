@@ -1,25 +1,18 @@
-import { useParams } from "react-router-dom";
+import Transactions from "../BlockViewer/Transactions/Transactions";
 
 const WalletViewer = () => {
-  const params = useParams();
 
   return (
     <div>
-      <h1>Wallet Details</h1>
-      <p>Adress</p>
-      <p>{params.walletId}</p>
-      <p>Balance</p>
-      <p>100</p>
-
-      <h1>Transactions</h1>
-      <ul>
-        <li>
-          Txn 1
-        </li>
-        <li>
-          Txn 2
-        </li>
-      </ul>
+      <div className="border-b border-gray-200 pb-5">
+        <h2 className="text-2xl font-medium leading-6 text-gray-900">
+          Wallet
+        </h2>
+        <p className="mt-2 max-w-4xl text-sm text-gray-500">
+          degengigaman.sol
+        </p>
+      </div>
+      <Transactions />
     </div>
   );
 };
