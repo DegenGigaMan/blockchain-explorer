@@ -1,5 +1,7 @@
+import WalletViewer from "../../components/WalletViewer/WalletViewer";
+
 const WalletPage = () => {
-  return <h1>Wallet history and details</h1>;
+  return <WalletViewer />;
 }
 
 export default WalletPage;
