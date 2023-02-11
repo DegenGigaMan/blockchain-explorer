@@ -10,7 +10,7 @@ const NewTransaction = () => {
             <p
               className="font-medium text-indigo-600"
             >
-              Send some money to someone!
+              Try it out!
             </p>
           </p>
         </div>

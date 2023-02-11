@@ -1,18 +1,6 @@
 import Transaction from "./Transaction/Transaction";
 
-const transactions = [
-  {
-    id: 0,
-    from: "System",
-    to: "John",
-    amount: 25,
-    time: 1676059901858,
-    isValid: true,
-  },
-  // More transactions...
-];
-
-const Transactions = () => {
+const Transactions = (props) => {
   return (
     <div className="my-8">
       <div className="sm:flex sm:items-center">
@@ -69,7 +57,7 @@ const Transactions = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {transactions.map((transaction) => (
+                  {props.txns.map((transaction) => (
                     <Transaction key={transaction.id} transaction={transaction}/>
                   ))}
                 </tbody>
