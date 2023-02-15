@@ -1,31 +1,53 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/DeadGod.png";
+import { Cog6ToothIcon } from "@heroicons/react/24/outline";
+import { useContext } from "react";
+import BlockContext from "../../../store/block-context";
 
 const Header = () => {
+  const blockContext = useContext(BlockContext);
+
   return (
     <header className="bg-indigo-600">
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
+      <nav
+        className="mx-auto w-screen lg:max-w-7xl px-6 lg:px-8"
+        aria-label="Top"
+      >
         <div className="flex w-full items-center justify-between border-b border-indigo-500 py-6 lg:border-none">
-          <div className="items-center">
+          <div className="flex items-center">
             <Link to="/">
               <span className="sr-only">DegenGigaMan</span>
-              <img className="inline-block h-10 w-auto rounded-xl" src={logo} alt="logo" />
-              <div className="inline-block px-4 font-bold text-xl text-white">DG's Blockchain</div>
+              <img
+                className="inline-block h-10 w-auto rounded-xl"
+                src={logo}
+                alt="logo"
+              />
+              <div className="hidden lg:inline-block px-4 tracking-tight font-bold text-xl text-white">
+                DG's Blockchain
+              </div>
             </Link>
           </div>
-          <div className="ml-10 space-x-4">
+          <div className="flex items-center px-4">
             <Link
               to="/settings"
-              className="inline-block rounded-md border border-transparent bg-indigo-500 py-2 px-4 text-base font-medium text-white hover:bg-opacity-75"
+              className="flex-shrink-0 rounded-md border border-transparent bg-indigo-500 py-2 px-2 text-base font-medium text-white hover:bg-opacity-75"
             >
-              Settings
+              <Cog6ToothIcon className="h-6 w-6" aria-hidden="true" />
             </Link>
             <Link
               to="/new-transaction"
-              className="inline-block rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium text-indigo-600 hover:bg-indigo-50"
+              className="flex-shrink-0 ml-4 rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium text-indigo-600 hover:bg-indigo-50"
             >
               Create Transaction
             </Link>
+            {blockContext.showPending &&
+              <Link
+                to="/new-transaction/pending"
+                className="flex flex-shrink-0 flex-nowrap gap-2 ml-4 rounded-md border border-white bg-indigo-600 py-2 px-4 text-base font-medium text-white hover:bg-indigo-500"
+              >
+                Pending Transactions <div className="font-bold bg-white rounded-sm px-2 text-indigo-600">{blockContext.pendingTransactions.length}</div>
+              </Link>
+            }
           </div>
         </div>
       </nav>

@@ -1,10 +1,6 @@
-import NewTransaction from '../components/NewTransaction/NewTransaction';
+import NewTransaction from "../components/NewTransaction/NewTransaction";
 const NewTransactionPage = () => {
-  return (
-    <>
-      <NewTransaction />
-    </>
-  );
+  return <NewTransaction />;
 };
 
 export default NewTransactionPage;
