@@ -12,7 +12,7 @@ const WalletViewer = () => {
           degengigaman.sol
         </p>
       </div>
-      <Transactions/>
+      <Transactions title={false}/>
     </div>
   );
 };
