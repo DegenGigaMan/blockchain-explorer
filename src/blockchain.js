@@ -12,7 +12,7 @@ const ec = new EC('secp256k1');
 //to stop anyone from creating txns from addresses that arent theirs,
 //we need to make it mandatory to sign txns with a public and private key,
 //that way you can only spend coins in a wallet if you have the private key.
-class Transaction {
+export class Transaction {
   constructor(fromAddress, toAddress, amount) {
     this.fromAddress = fromAddress;
     this.toAddress = toAddress;
@@ -96,7 +96,7 @@ class Block {
 }
 
 // a Blockchain is an array of blocks, with methods to retrieve and add blocks
-class Blockchain {
+export class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
     this.difficulty = 2;
