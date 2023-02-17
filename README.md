@@ -1,20 +1,29 @@
-# Create React App
+# Blockchain Explorer Frontend
 
-This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
+React application that allows you to interact with a blockchain. You can see the blocks on chain, see transaction within them and even create new transactions and mine blocks. 
 
-## Deploy Your Own
+Built on top of a simple Blockchain implementation in Javascript (/src/blockchain.js).
 
-Deploy your own Create React App project with Vercel.
+## Live demo
+**[Check it out here.](https://blockchain-explorer-nine.vercel.app/)** You can create transactions, mine blocks and explore your own blockchain.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app&template=create-react-app)
+## Getting Started
+Get a copy of the Blockchain Explorer front-end running on your local machine (for playing around, testing or development).
 
-_Live Example: https://create-react-template.vercel.app/_
+```
+git clone https://github.com/DegenGigaMan/blockchain-explorer.git
+```
 
-## Available Scripts
+Install the dependencies:
+```
+cd blockchain-explorer
+npm install
+```
 
-In the project directory, you can run:
-
-### `npm start`
+Run the application:
+```
+npm start
+```
 
 Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
@@ -29,3 +38,17 @@ Launches the test runner in the interactive watch mode. See the section about [r
 Builds the app for production to the `build` folder.
 
 It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+
+## Screens
+
+**Homepage:** Seeing blocks on the chain & exploring transactions in each block.
+
+**Creating new transactions:** You can create new transactions to any wallet for any amount (no validation). New transactions will be added to the "pending transactions", ready to be included in the next block.
+
+**Pending transactions:** List of all pending transactions. These will be included in the next block when the mining process starts.
+
+**Wallet details:** You can click on any wallet address and see an overview of that wallet: its current balance and all transaction to/from that wallet.
+
+
+
+*This is for educational purposes only. Use it to learn how blockchains operate.*
