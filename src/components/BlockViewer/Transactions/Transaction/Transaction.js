@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import BlockContext from "../../../../store/block-context";
 
 const Transaction = (props) => {
   let isValidText;
@@ -14,6 +16,13 @@ const Transaction = (props) => {
   } else {
     shortAddress = address;
   }
+
+  const blockContext = useContext(BlockContext);
+
+  const clickHandler = () => {
+    blockContext.onWallet(props.transaction.toAddress);
+  }
+
   return (
     <tr>
       <td className="whitespace-nowrap w-10 overflow-hidden py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">
@@ -23,7 +32,7 @@ const Transaction = (props) => {
         {shortAddress}
       </td>
       <td className="whitespace-nowrap px-2 py-2 text-sm text-blue-500 font-medium">
-        <Link to={`/wallet/${props.transaction.to}`}>
+        <Link onClick={clickHandler} to={`/wallet/${props.transaction.toAddress}`}>
           {props.transaction.toAddress}
         </Link>
       </td>
