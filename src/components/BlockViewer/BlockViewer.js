@@ -19,7 +19,7 @@ const BlockViewer = (props) => {
           transactions stored inside.
         </p>
       </div>
-      <Blocks chain={props.chain} />
+      <Blocks reward={props.reward} chain={props.chain} />
       <Transactions title={true} txns={activeBlock.transactions} />
     </>
   );

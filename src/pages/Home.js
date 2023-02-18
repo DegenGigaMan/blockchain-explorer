@@ -5,7 +5,7 @@ import { getBlockchain } from "../services/blockchainService";
 const HomePage = () => {
   const blockchain = useLoaderData();
 
-  return <BlockViewer chain={blockchain} />;
+  return <BlockViewer reward={blockchain.miningReward} chain={blockchain.chain} />;
 };
 
 export default HomePage;

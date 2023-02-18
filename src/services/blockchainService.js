@@ -29,7 +29,7 @@ blockchainInstance.minePendingTransactions('my-wallet-address');
 
 export const getBlockchain = () => {
   console.log(blockchainInstance);
-  return blockchainInstance.chain;
+  return blockchainInstance;
 };
 
 export const setDifficulty = (difficulty) => {
