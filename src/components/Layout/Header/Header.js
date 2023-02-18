@@ -14,7 +14,7 @@ const Header = () => {
         aria-label="Top"
       >
         <div className="flex w-full items-center justify-between border-b border-indigo-500 py-6 lg:border-none">
-          <div className="flex items-center">
+          <div className="flex flex-shrink-0 items-center">
             <Link to="/">
               <span className="sr-only">DegenGigaMan</span>
               <img
@@ -27,7 +27,7 @@ const Header = () => {
               </div>
             </Link>
           </div>
-          <div className="flex items-center px-4">
+          <div className="flex flex-wrap gap-4 justify-end items-center">
             <Link
               to="/settings"
               className="flex-shrink-0 rounded-md border border-transparent bg-indigo-500 py-2 px-2 text-base font-medium text-white hover:bg-opacity-75"
@@ -36,14 +36,14 @@ const Header = () => {
             </Link>
             <Link
               to="/new-transaction"
-              className="flex-shrink-0 ml-4 rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium text-indigo-600 hover:bg-indigo-50"
+              className="flex-shrink-0 rounded-md border border-transparent bg-white py-2 px-4 text-base font-medium text-indigo-600 hover:bg-indigo-50"
             >
               Create Transaction
             </Link>
             {blockContext.showPending &&
               <Link
                 to="/new-transaction/pending"
-                className="flex flex-shrink-0 flex-nowrap gap-2 ml-4 rounded-md border border-white bg-indigo-600 py-2 px-4 text-base font-medium text-white hover:bg-indigo-500"
+                className="flex flex-shrink-0 flex-nowrap gap-2 rounded-md border border-transparent bg-indigo-500 py-2 px-4 text-base font-medium text-white hover:bg-opacity-75"
               >
                 Pending Transactions <div className="font-bold bg-white rounded-sm px-2 text-indigo-600">{blockContext.pendingTransactions.length}</div>
               </Link>

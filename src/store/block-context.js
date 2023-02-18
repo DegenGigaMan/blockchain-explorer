@@ -8,6 +8,8 @@ const BlockContext = createContext({
   onShowPending: () => {},
   pendingTransactions: [],
   loadPending: () => {},
+  toAddress: '',
+  onWallet: () => {},
 
 });
 
@@ -15,6 +17,11 @@ export const BlockProvider = (props) => {
   const [selectedBlock, setSelectedBlock] = useState({});
   const [showPending, setShowPending] = useState(false);
   const [pendingTransactions, setPendingTransactions] = useState([]);
+  const [toAddress, setToAddress] = useState('');
+
+  const walletHandler = (address) => {
+    setToAddress(address);
+  }
 
   const selectBlockHandler = (block) => {
     //console.log(block);
@@ -39,6 +46,8 @@ export const BlockProvider = (props) => {
         showPending: showPending,
         pendingTransactions: pendingTransactions,
         loadPending: loadPendingHandler,
+        toAddress: toAddress,
+        onWallet: walletHandler,
       }}
     >
       {props.children}

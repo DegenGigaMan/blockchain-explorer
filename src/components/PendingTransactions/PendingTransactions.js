@@ -14,7 +14,7 @@ const PendingTransactions = () => {
   };
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-wrap gap-6 md:justify-between md:items-center">
         <div className="border-b border-gray-200 pb-5">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900">
             Pending transactions
@@ -26,7 +26,7 @@ const PendingTransactions = () => {
         </div>
         <button
           onClick={startMining}
-          className="h-1/2 rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-md font-bold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="flex-shrink-0 h-1/2 rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-md font-bold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           Start mining
         </button>

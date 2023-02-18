@@ -5,8 +5,8 @@
 //  checking if user has enough funds to make a transaction
 
 const SHA256 = require("crypto-js/sha256");
-const EC = require('elliptic').ec;
-const ec = new EC('secp256k1');
+const EC = require("elliptic").ec;
+const ec = new EC("secp256k1");
 
 //a transaction stores to and from address and the amount send
 //to stop anyone from creating txns from addresses that arent theirs,
@@ -37,14 +37,14 @@ export class Transaction {
 
   //this method is going to verify if the txn has been correctly signed
   isValid() {
-    if(this.fromAddress === null) return true;
+    if (this.fromAddress === null) return true;
 
-    if(!this.signature || this.signature.length === 0) {
-      throw new Error('No signature in this transaction');
+    if (!this.signature || this.signature.length === 0) {
+      throw new Error("No signature in this transaction");
     }
 
     //verify that the sig was signed by the correct key
-    const publicKey = ec.keyFromPublic(this.fromAddress, 'hex');
+    const publicKey = ec.keyFromPublic(this.fromAddress, "hex");
     return publicKey.verify(this.calculateHash(), this.signature);
   }
 }
@@ -84,9 +84,9 @@ class Block {
   }
 
   //verify txns in the block
-  hasValidTransactions(){
-    for(const tx of this.transactions){
-      if(!tx.isValid()){
+  hasValidTransactions() {
+    for (const tx of this.transactions) {
+      if (!tx.isValid()) {
         return false;
       }
     }
@@ -130,21 +130,20 @@ export class Blockchain {
     console.log("Block successfully mined!");
     this.chain.push(block);
     this.pendingTransactions = [
-      new Transaction('System', miningRewardAddress, this.miningReward),
+      new Transaction("System", miningRewardAddress, this.miningReward),
     ];
   }
 
   //receives a txn and adds it to the pending txns array
   addTransaction(transaction) {
-
     //check if from and to addresses were provided
-    if(!transaction.fromAddress || !transaction.toAddress){
-      throw new Error('Transaction must include from and to address.');
+    if (!transaction.fromAddress || !transaction.toAddress) {
+      throw new Error("Transaction must include from and to address.");
     }
 
     //check if txn is valid
-    if(!transaction.isValid()){
-      throw new Error('Cannot add invalid transaction to chain.')
+    if (!transaction.isValid()) {
+      throw new Error("Cannot add invalid transaction to chain.");
     }
 
     this.pendingTransactions.push(transaction);
@@ -155,18 +154,21 @@ export class Blockchain {
   //  the txn is just stored on the blockchain, checking your balance means going through all the txns that involve an address and calculate it
   getAddressBalance(address) {
     let balance = 0;
-
+    let transactions = [];
     for (const block of this.chain) {
       for (const txn of block.transactions) {
         if (txn.toAddress === address) {
           balance += txn.amount;
+          transactions.push(txn);
         }
         if (txn.fromAddress === address) {
           balance -= txn.amount;
+          transactions.push(txn);
         }
       }
     }
-    return balance;
+    const walletDetails = { balance: balance, transactions: transactions };
+    return walletDetails;
   }
 
   // returns false if the chain had its data changed. Blocks on the chain are meant to be immutable.
@@ -175,7 +177,7 @@ export class Blockchain {
       const currentBlock = this.chain[i];
       const previousBlock = this.chain[i - 1];
 
-      if(!currentBlock.hasValidTransactions()){
+      if (!currentBlock.hasValidTransactions()) {
         return false;
       }
       if (currentBlock.hash !== currentBlock.calculateHash()) {

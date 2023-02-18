@@ -7,7 +7,7 @@ const Transactions = (props) => {
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Transactions</h1>
           <p className="mt-2 text-sm text-gray-700">
-            No transactions included in this block.
+            No transactions exist.
           </p>
         </div>
       </div>
@@ -24,7 +24,7 @@ const Transactions = (props) => {
               Transactions
             </h1>
             <p className="mt-2 text-sm text-gray-700">
-              All transactions included in this block.
+              All transactions included.
             </p>
           </div>
         </div>
